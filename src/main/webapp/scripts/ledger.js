@@ -1,5 +1,20 @@
 
 
+
+localStorage.setItem('name', 'Matt West');
+console.log(localStorage.getItem('name'))
+
+const input = document.querySelector("input");
+const log = document.getElementById("values");
+
+input.addEventListener("input", updateValue);
+
+function updateValue(e) {
+  log.textContent = e.target.value;
+}
+
+
+
 const createExpenseBtn = document.querySelector(".create-expense-btn"); // "Create Note button in html"
 const insert = document.querySelector(".insert");
 
@@ -17,7 +32,7 @@ createExpenseBtn.addEventListener("click", () =>{  // create the note
 	
 	let rowCheckbox = document.createElement("input");
 	rowCheckbox.type="checkbox";
-	rowCheckbox.className="row-checkbox"
+	rowCheckbox.className="row-checkbox input"
 	
 	//radioContainer.appendChild(rowRadio.appendChild(rowCheckbox))
 	

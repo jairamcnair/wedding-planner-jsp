@@ -18,7 +18,7 @@
 		<div class="radio-container">
         	<div class="row-inner-inner row-radio"> 
              	<input
-             		class="row-checkbox"
+             		class="row-checkbox input"
              		type="checkbox"
              	/>
             </div>
@@ -62,6 +62,8 @@
 	<div class="insert"> </div>
 	
 	<button class="create-expense-btn"> Add Expense </button>
+	
+	<p id="values"></p>
 	
 </div>
 	
