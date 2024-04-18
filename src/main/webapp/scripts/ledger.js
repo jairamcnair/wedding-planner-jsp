@@ -4,22 +4,36 @@
 localStorage.setItem('name', 'Matt West');
 console.log(localStorage.getItem('name'))
 
-const input = document.querySelector("input");
-const log = document.getElementById("values");
+/*let x = document.querySelector(".row-title");
+localStorage.setItem('valuex', x.innerHTML);
+console.log(localStorage.getItem('valuex'))*/
 
-input.addEventListener("input", updateValue);
 
-function updateValue(e) {
-  log.textContent = e.target.value;
-}
+const elements = document.querySelectorAll(".negative-input");
+elements.forEach(element => {
+  element.addEventListener('keyup', () => {
+	  	localStorage.setItem('value', element.value)
+		console.log(localStorage.getItem('value'))
+		console.log("hey")
+  })
+})
+ 
 
+/*function updateStorage(){
+	localStorage.setItem('value', element.value)
+	console.log(value)
+	console.log("hey")
+	/*for (let i = 0; i < nodeList.length; i++) {
+		localStorage.setItem(i, nodeList[i].innerHTML)
+		console.log(localStorage.getItem(i))
+	}
+}*/
 
 
 const createExpenseBtn = document.querySelector(".create-expense-btn"); // "Create Note button in html"
 const insert = document.querySelector(".insert");
-
 createExpenseBtn.addEventListener("click", () =>{  // create the note
-	
+
 	let rowContainer = document.createElement("div");
 	rowContainer.className="row-container";
 	
@@ -107,8 +121,8 @@ createExpenseBtn.addEventListener("click", () =>{  // create the note
 	
 	rowContainer.appendChild(depositContainer)
 	
-	prefixContainerInner.appendChild(prefixContainerInnerDollar)
 	prefixContainerInner.appendChild(prefixContainerInnerMinus)
+	prefixContainerInner.appendChild(prefixContainerInnerDollar)
 	prefixContainer.appendChild(prefixContainerInner)
 	negativeInputContainer.appendChild(negativeInput)
 	prefixContainer.appendChild(negativeInputContainer)
@@ -121,15 +135,6 @@ createExpenseBtn.addEventListener("click", () =>{  // create the note
 	rowContainer.appendChild(dateContainer)
 	
 	insert.appendChild(rowContainer);
-	
-    
-    /*insert.appendChild(rowContainer.appendChild(radioContainer.appendChild(rowRadio.appendChild(rowCheckbox))));
-	insert.appendChild(rowContainer.appencChild(titleContainer.appendChild(rowTitle)));
-	insert.appendChild(depositContainer);
-	insert.appendChild(expenseContainer.appendChild(prefixContainer.appendChild(prefixContainerInner.appendChild(prefixContainerInnerMinus, prefixContainerInnerDollar), negativeInputContainer.appendChild(negativeInput))));
-	insert.appendChild(dateContainer.appendChild(dateContainerInner.appendChild(dateInputContainer.appendChild(dateInput))));
-	
-	*/
 });
 
 
