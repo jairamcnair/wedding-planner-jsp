@@ -13,6 +13,7 @@
 	<jsp:include page="Navigation.jsp" flush="true"/>
 
 <div class="page">
+<!--  
 	<div class="row-container">
 		
 		<div class="radio-container">
@@ -58,7 +59,7 @@
                 </div>
             </div>
 	</div>
-	
+	-->
 	<div class="insert"> </div>
 	
 	<button class="create-expense-btn"> Add Expense </button>

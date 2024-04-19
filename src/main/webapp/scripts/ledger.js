@@ -1,35 +1,79 @@
 
 
-
 localStorage.setItem('name', 'Matt West');
 console.log(localStorage.getItem('name'))
 
-/*let x = document.querySelector(".row-title");
-localStorage.setItem('valuex', x.innerHTML);
-console.log(localStorage.getItem('valuex'))*/
 
-
-const elements = document.querySelectorAll(".negative-input");
-elements.forEach(element => {
-  element.addEventListener('keyup', () => {
-	  	localStorage.setItem('value', element.value)
-		console.log(localStorage.getItem('value'))
-		console.log("hey")
-  })
+// save input values to local storage
+const negativeInputContainers = document.querySelectorAll(".negative-input-container") // input container container
+const negativeInputs = document.querySelectorAll(".negative-input");
+negativeInputs.forEach(negativeInput =>{
+	localStorage.setItem("negativeInput", negativeInput.innerHTML)
+	console.log("negativeInput")
 })
- 
 
-/*function updateStorage(){
-	localStorage.setItem('value', element.value)
-	console.log(value)
-	console.log("hey")
-	/*for (let i = 0; i < nodeList.length; i++) {
-		localStorage.setItem(i, nodeList[i].innerHTML)
-		console.log(localStorage.getItem(i))
-	}
-}*/
+negativeInputContainers.addEventListener("click", function(e){
+    if(e.target.className === ".negative-input"){
+        notes = document.querySelectorAll(".negative-input");
+        notes.forEach(nt => {
+            nt.onkeyup = function(){ // each time a key is pressed, the storage is updated
+                updateStorage();
+            }
+        })
+    }
+});
 
 
+function showInput(){
+	negativeInputContainers.innerHTML = localStorage.getItem("negativeInput");
+}
+showInput()
+
+
+// show row
+let page = document.querySelector(".page") // row-container container
+let rowContainers = document.querySelectorAll(".row-container");
+rowContainers.forEach(rowContainer => {
+	localStorage.setItem('rowContainer', rowContainer.innerHTML)
+	//console.log(localStorage.getItem("rowContainer"))
+})
+
+function show(){
+    page.innerHTML = localStorage.getItem("rowContainer"); //set container element innerHTML to 
+}
+show();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// create new row on button click
 const createExpenseBtn = document.querySelector(".create-expense-btn"); // "Create Note button in html"
 const insert = document.querySelector(".insert");
 createExpenseBtn.addEventListener("click", () =>{  // create the note
@@ -58,6 +102,7 @@ createExpenseBtn.addEventListener("click", () =>{  // create the note
 	let rowTitle = document.createElement("input");
 	rowTitle.className="row-inner-inner row-title";
 	rowTitle.type = "text";
+	//rowTitle.onkeyup(updateStorage)
 	
 	//titleContainer.appendChild(rowTitle)
 	
@@ -88,9 +133,10 @@ createExpenseBtn.addEventListener("click", () =>{  // create the note
 	let negativeInputContainer = document.createElement("div");
 	negativeInputContainer.className="negative-input-container"
 	
-	let negativeInput = document.createElement("input");
-	negativeInput.type = "number";
+	let negativeInput = document.createElement("p");
+	//negativeInput.type = "number";
 	negativeInput.className = "input negative-input";
+	negativeInput.setAttribute("contenteditable", "true")
 	
 	//expenseContainer.appendChild(prefixContainer.appendChild(prefixContainerInner.appendChild(prefixContainerInnerMinus, prefixContainerInnerDollar), negativeInputContainer.appendChild(negativeInput)));
 	
@@ -135,10 +181,5 @@ createExpenseBtn.addEventListener("click", () =>{  // create the note
 	rowContainer.appendChild(dateContainer)
 	
 	insert.appendChild(rowContainer);
+	
 });
-
-
-
-
-
-//showNotes();
