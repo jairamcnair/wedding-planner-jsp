@@ -44,13 +44,20 @@ input[type='checkbox']:checked{
 .expense{}
 .date{}
 
+.remove{
+	text-align: center;
+}
+.remove:hover{
+	cursor: pointer;
+}
 input[type='checkbox']{
 	width: 5%;
 	height: 40px;
 }
-.prefix-container{
+.prefix-container, .remove{
 	width: 3%;
 	height: 100%;
+	border: 2px solid red;
 }
 
 .title, .expense, .date{
@@ -70,5 +77,8 @@ input[type='checkbox']{
 	  height: 40px;
 	  background-color:aquamarine;
   }
-      
+ .create-expense-btn:hover{
+	 cursor: pointer;
+	 background-color: blue;
+ }
  

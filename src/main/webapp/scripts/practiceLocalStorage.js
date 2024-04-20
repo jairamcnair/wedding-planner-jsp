@@ -3,6 +3,49 @@
 localStorage.setItem('name', 'Matt West');
 console.log(localStorage.getItem('name'))
 
+const createExpenseBtn = document.querySelector(".create-expense-btn");
+createExpenseBtn.addEventListener("click", function(){
+	
+	const form = document.querySelector(".form");
+	const row = document.createElement("div");
+	row.className = "row";
+	const checkbox = document.createElement("input");
+	checkbox.type = "checkbox";
+	checkbox.className = "checkbox";
+	const title = document.createElement("p");
+	title.className = "title";
+	title.setAttribute("contenteditable", "true");
+	const emptyDiv = document.createElement("div");
+	emptyDiv.className = "empty-div";
+	const prefixContainer = document.createElement("div");
+	prefixContainer.className = "prefix-container";
+	const minusSign = document.createElement("div");
+	minusSign.innerHTML = "-";
+	const dollarSign = document.createElement("div");
+	dollarSign.innerHTML = "$";
+	const expense = document.createElement("p");
+	expense.className = "expense";
+	expense.setAttribute("contenteditable", "true");
+	const date = document.createElement("input");
+	date.type = "date";
+	date.className = "date";
+	
+	prefixContainer.appendChild(minusSign);
+	prefixContainer.appendChild(dollarSign)
+	row.appendChild(checkbox);
+	row.appendChild(title);
+	row.appendChild(emptyDiv);
+	row.appendChild(prefixContainer);
+	row.appendChild(expense);
+	row.appendChild(date);
+	form.appendChild(row);
+	
+	console.log(form);
+	
+	updateStorage();
+})
+	
+	
 //this works
 const expense = document.querySelector(".expense");
 expense.addEventListener("keyup", function(){
@@ -41,9 +84,9 @@ function getData(){
 	title.innerHTML = titleData;
 	
 	let dateData = localStorage.getItem("date");
-	console.log(dateData);
+	//console.log(dateData);
 	date.value = dateData;
-	console.log(date.value);
+	//console.log(date.value);
 	
 	let checkbox = document.querySelector(".checkbox");
 	let checkboxData = localStorage.getItem("checkbox");
@@ -57,35 +100,13 @@ function getData(){
 
 getData();
 
-/*  this doesn't work well...
-const notesContainer = document.querySelector(".form");
-const createBtn = document.querySelector(".btn"); // "Create Note button in html"
-let notes = document.querySelectorAll(".expense"); // selects all input boxes
-
 function updateStorage(){
-    localStorage.setItem("notes", notesContainer.innerHTML);
+	let form = document.querySelector
 }
 
-function showNotes(){
-    notesContainer.innerHTML = localStorage.getItem("notes");
-}
-
-
-notesContainer.addEventListener("click", function(e){
-    if(e.target.tagName === "IMG"){
-        e.target.parentElement.remove();
-        updateStorage();
-    }
-    else if(e.target.tagName === "INPUT"){
-        notes = document.querySelectorAll(".expense");
-        notes.forEach(nt => {
-            nt.onkeyup = function(){ // each time a key is pressed, the storage is updated
-                updateStorage();
-            }
-        })
-    }
-});
-
-showNotes();
-
-*/
+	
+	
+	
+	
+	
+	
