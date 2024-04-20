@@ -5,7 +5,6 @@ console.log(localStorage.getItem('name'))
 
 const form = document.querySelector(".form");
 const rows = document.querySelectorAll(".row");
-const dates = document.querySelectorAll(".date");
 
 function updateStorage(e){
 	localStorage.setItem("rows", form.innerHTML);
@@ -29,15 +28,17 @@ form.addEventListener("click", function(e){
 	}
 	else if(e.target.tagName === "INPUT"){ // not working
 		if(e.target.type === "date"){
-			//dates = document.querySelectorAll(".date");
+			dates = document.querySelectorAll(".date");
 			dates.forEach(dt => {
-				dt.onchange = function() {
-					alert("hey");
-					let value = dt.value;
-					console.log(value);
-					updateStorage();
-				}
+				addEventListener("change", dateClick);
 			})
+			function dateClick() {
+				for(i = 0; i < dates.length; i++){
+					console.log(dates[i].value)
+					localStorage.setItem("date"+i, dates[i].value)
+					console.log(localStorage.getItem("date"+i));
+				}
+			}
 		}
 		else if(e.target.type === "checkbox"){
 			checkboxes = document.querySelectorAll(".checkbox");
@@ -45,7 +46,6 @@ form.addEventListener("click", function(e){
 				let checkedState = checkboxes[i].checked; //returns true if checked, false if not checked
 				console.log(checkedState);
 				localStorage.setItem("checkbox"+i, checkboxes[i].checked)
-				//console.log(localStorage.getItem("checkbox"+i));
 			}
 		}
 		
@@ -59,28 +59,7 @@ form.addEventListener("click", function(e){
 	}
 })
 
-// Add a click event listener to each one
-/*buttons.addEventListener("click", function(){
-	alert("hey");
-})*/
 
-/*
-const titles = document.querySelectorAll(".title");
-titles.forEach(element => {
-  element.addEventListener('click', () =>{
-	  alert("hey");
-  });
-});*/
-/*
-for(i = 0; i < titles.length; i++){
-	titles[i].addEventListener("click", function(e){
-		//let value = titles[i].innerHTML;
-		//console.log(value);
-		alert("hey");
-	})
-}
-
-*/
 function getData(){
 	form.innerHTML = localStorage.getItem("rows");
 	
@@ -93,6 +72,12 @@ function getData(){
 		if(checkboxData === "false"){
 			checkboxes[i].checked = false;
 		}
+	}
+	dates = document.querySelectorAll(".date");
+	for(i = 0; i < dates.length; i++){
+		let dateData = localStorage.getItem("date"+i);
+		//console.log(dateData);
+		dates[i].value = dateData;
 	}
 	
 }
