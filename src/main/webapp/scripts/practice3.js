@@ -50,6 +50,14 @@ form.addEventListener("click", function(e){
 			const checkbox = document.getElementById(e.target.id);
 			let checkedState = checkbox.checked; // if checked, returns true
 			localStorage.setItem(e.target.id, checkedState);
+			if(checkedState === "true"){
+				localStorage.setItem(e.target.id, "false");
+				checkbox.checked = true;
+			}
+			if(checkedState === "false"){
+				localStorage.setItem(e.target.id, "true");
+				checkbox.checked = false;
+			}
 			//console.log(localStorage.getItem(checkbox));
 			/*const checkboxes = document.querySelectorAll(".checkbox");
 			for(i = 0; i < checkboxes.length; i++){
@@ -93,7 +101,7 @@ function getData(){
 	form.innerHTML = localStorage.getItem("rows");
 	// make count local storage not reset on page reload
 	
-	checkboxes = document.querySelectorAll(".checkbox");
+	/*checkboxes = document.querySelectorAll(".checkbox");
 	for(i = 0; i < checkboxes.length; i++){
 		let checkboxData = localStorage.getItem("checkbox"+i);
 		if(checkboxData === "true"){
@@ -102,7 +110,7 @@ function getData(){
 		if(checkboxData === "false"){
 			checkboxes[i].checked = false;
 		}
-	} 
+	} */
 	dates = document.querySelectorAll(".date");
 	for(i = 0; i < dates.length; i++){
 		let dateData = localStorage.getItem("date"+i);
@@ -154,7 +162,7 @@ createExpenseBtn.addEventListener("click", function(){
 	remove.className="remove";
 	remove.innerHTML = "X";
 	remove.id = "remove"+count;
-	localStorage.setItem(remove.id, "null");
+	//localStorage.setItem(remove.id, "null");
 	//removeArray.push(remove);
 	//console.log(removeArray);
 	//localStorage.setItem("remove"+removeArray.indexOf(remove), "null");
