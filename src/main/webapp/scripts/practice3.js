@@ -5,6 +5,7 @@ remove array so we can keep track of the indexes - we will add the array
 key + values to local storage and delete them when the button is clicked
 */
 
+// THIS CODE IS CORRECT AND IS THE CODE USED IN THE LEDGER.JS FILE
 const form = document.querySelector(".form");
 const rows = document.querySelectorAll(".row");
 
@@ -38,11 +39,14 @@ form.addEventListener("click", function(e){
 				addEventListener("change", dateClick);
 			})
 			function dateClick() {
-				for(i = 0; i < dates.length; i++){
+				const date = document.getElementById(e.target.id);
+				localStorage.setItem(e.target.id, date.value);
+				//use code below if above code doesn't work during testing
+				/*for(i = 0; i < dates.length; i++){
 					console.log(dates[i].value)
 					localStorage.setItem("date"+i, dates[i].value)
 					console.log(localStorage.getItem("date"+i));
-				}
+				}*/
 			}
 		}
 		else if(e.target.type === "checkbox"){
@@ -52,11 +56,11 @@ form.addEventListener("click", function(e){
 			localStorage.setItem(e.target.id, checkedState);
 			if(checkedState === "true"){
 				localStorage.setItem(e.target.id, "false");
-				checkbox.checked = true;
+				checkbox.checked = false;
 			}
 			if(checkedState === "false"){
 				localStorage.setItem(e.target.id, "true");
-				checkbox.checked = false;
+				checkbox.checked = true;
 			}
 			//console.log(localStorage.getItem(checkbox));
 			/*const checkboxes = document.querySelectorAll(".checkbox");
@@ -83,11 +87,12 @@ form.addEventListener("click", function(e){
 		localStorage.removeItem("checkbox"+lastCharRemove);
 		console.log(localStorage.getItem("checkbox"+lastCharRemove));
 		localStorage.removeItem("remove"+lastCharRemove);
+		localStorage.removeItem("date"+lastCharRemove);
 		
 		//find last character of checkbox id
 		let count = localStorage.getItem("count");
 		let countNumber = Number(count);
-		localStorage.setItem("count", countNumber-1);
+		//localStorage.setItem("count", countNumber-1);
 		//console.log(count);
 		
 		/*let index = localStorage.getItem("count");
@@ -101,21 +106,37 @@ function getData(){
 	form.innerHTML = localStorage.getItem("rows");
 	// make count local storage not reset on page reload
 	
-	/*checkboxes = document.querySelectorAll(".checkbox");
+	checkboxes = document.querySelectorAll(".checkbox");
 	for(i = 0; i < checkboxes.length; i++){
-		let checkboxData = localStorage.getItem("checkbox"+i);
+		const id = checkboxes[i].id;
+		//console.log(id);
+		let checkboxChecked = localStorage.getItem(id);
+		if(checkboxChecked === "true"){
+			checkboxes[i].checked = true;
+			//console.log("true");
+		}
+		if(checkboxChecked === "false"){
+			checkboxes[i].checked = false;
+			//console.log("false");
+		}
+		/*let checkboxData = localStorage.getItem("checkbox"+i);
 		if(checkboxData === "true"){
 			checkboxes[i].checked = true;
 		}
 		if(checkboxData === "false"){
 			checkboxes[i].checked = false;
-		}
-	} */
+		}*/
+	} 
 	dates = document.querySelectorAll(".date");
 	for(i = 0; i < dates.length; i++){
-		let dateData = localStorage.getItem("date"+i);
+		const id = dates[i].id;
+		console.log(id);
+		let date = localStorage.getItem(id); 
+		console.log(date);
+		dates[i].value = date;
+		/*let dateData = localStorage.getItem("date"+i);
 		//console.log(dateData);
-		dates[i].value = dateData;
+		dates[i].value = dateData;*/
 	}
 }
 
@@ -158,6 +179,7 @@ createExpenseBtn.addEventListener("click", function(){
 	const date = document.createElement("input");
 	date.type = "date";
 	date.className = "date";
+	date.id = "date"+count;
 	const remove = document.createElement("div");
 	remove.className="remove";
 	remove.innerHTML = "X";
@@ -180,7 +202,7 @@ createExpenseBtn.addEventListener("click", function(){
 	form.appendChild(row);
 	
 	//console.log(form);
-	console.log(checkboxArray)
+	//console.log(checkboxArray)
 	
 	updateStorage();
 })

@@ -1,11 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
 
 * {
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
     /*font-family: 'sans serif', 'Montserrat';*/
-    font-family: 'sans serif', 'Poppins';
+    /*font-family: 'sans serif', 'Poppins';*/
+    font-family: "Varela Round", sans-serif;
+  	font-weight: 400;
+  	font-style: normal;
 }
 
 .page{
@@ -22,7 +26,8 @@ nav{
     position: fixed; 
     top: 0; /* makes div stretch from top to bottom without the content filling it all the way */
     bottom: 0; /* makes div stretch from top to bottom without the content filling it all the way */
-    background-color: #FEF0E8;
+    /*background-color: #FEF0E8;*/
+    background-color: #EDF1FC;
 }
 
 #h1-div{
@@ -32,7 +37,7 @@ nav{
     align-items: center;
     width: 100%;
     height: 10%;
-    background-color: #E6967A;
+    background-color: rgb(0, 128, 255);
 }
 
 #h1-div h1{
@@ -56,7 +61,8 @@ nav{
     display: flex;
     align-items: center;
     height: 60px;
-    background-color: #FFA689;
+    /*background-color: #FFA689;*/
+    background-color: #D0DBFB;
     padding-left: 10px;
 }
 

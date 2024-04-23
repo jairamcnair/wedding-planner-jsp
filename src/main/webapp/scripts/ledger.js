@@ -1,47 +1,164 @@
 
 
-localStorage.setItem('name', 'Matt West');
-console.log(localStorage.getItem('name'))
+const form = document.querySelector(".form");
+const rows = document.querySelectorAll(".row");
 
+function updateStorage(){
+	localStorage.setItem("rows", form.innerHTML);
+}
 
-// save input values to local storage
-const negativeInputContainers = document.querySelectorAll(".negative-input-container") // input container container
-const negativeInputs = document.querySelectorAll(".negative-input");
-negativeInputs.forEach(negativeInput =>{
-	localStorage.setItem("negativeInput", negativeInput.innerHTML)
-	console.log("negativeInput")
-})
+const checkboxArray = [];
+const removeArray = [];
+//localStorage.setItem("count", 0) // this needs to happen only the first time the page loads, not after
 
-negativeInputContainers.addEventListener("click", function(e){
-    if(e.target.className === ".negative-input"){
-        notes = document.querySelectorAll(".negative-input");
-        notes.forEach(nt => {
-            nt.onkeyup = function(){ // each time a key is pressed, the storage is updated
+form.addEventListener("click", function(e){
+	if(e.target.tagName === "P"){
+		titles = document.querySelectorAll(".title");
+        titles.forEach(t => {
+            t.onkeyup = function(){ // each time a key is pressed, the storage is updated
                 updateStorage();
             }
         })
-    }
-});
-
-
-function showInput(){
-	negativeInputContainers.innerHTML = localStorage.getItem("negativeInput");
-}
-showInput()
-
-
-// show row
-let page = document.querySelector(".page") // row-container container
-let rowContainers = document.querySelectorAll(".row-container");
-rowContainers.forEach(rowContainer => {
-	localStorage.setItem('rowContainer', rowContainer.innerHTML)
-	//console.log(localStorage.getItem("rowContainer"))
+        expenses = document.querySelectorAll(".expense");
+        expenses.forEach(ex => {
+			ex.onkeyup = function() {
+				updateStorage();
+			}
+		})
+	}
+	else if(e.target.tagName === "INPUT"){ // not working
+		if(e.target.type === "date"){
+			dates = document.querySelectorAll(".date");
+			dates.forEach(dt => {
+				addEventListener("change", dateClick);
+			})
+			function dateClick() {
+				for(i = 0; i < dates.length; i++){
+					console.log(dates[i].value)
+					localStorage.setItem("date"+i, dates[i].value)
+					console.log(localStorage.getItem("date"+i));
+				}
+			}
+		}
+		else if(e.target.type === "checkbox"){
+			
+			const checkbox = document.getElementById(e.target.id);
+			let checkedState = checkbox.checked; // if checked, returns true
+			localStorage.setItem(e.target.id, checkedState);
+			if(checkedState === "true"){
+				localStorage.setItem(e.target.id, "false");
+				checkbox.checked = true;
+			}
+			if(checkedState === "false"){
+				localStorage.setItem(e.target.id, "true");
+				checkbox.checked = false;
+			}
+		}
+	}
+	else if(e.target.tagName === "INPUT"){ // not working
+		alert("hey");
+	}
+	else if(e.target.tagName === "DIV" && e.target.className === "remove"){
+		
+		e.target.parentElement.remove();
+		
+		//find last character of target id
+		let lastCharRemove = e.target.id.slice(-1);
+		console.log(lastCharRemove);
+		
+		//remove from local storage where target + checkbox last char match
+		localStorage.removeItem("checkbox"+lastCharRemove);
+		console.log(localStorage.getItem("checkbox"+lastCharRemove));
+		localStorage.removeItem("remove"+lastCharRemove);
+		
+		//find last character of checkbox id
+		let count = localStorage.getItem("count");
+		let countNumber = Number(count);
+		localStorage.setItem("count", countNumber-1);
+		updateStorage();
+	}
 })
 
-function show(){
-    page.innerHTML = localStorage.getItem("rowContainer"); //set container element innerHTML to 
+
+function getData(){
+	form.innerHTML = localStorage.getItem("rows");
+	dates = document.querySelectorAll(".date");
+	for(i = 0; i < dates.length; i++){
+		let dateData = localStorage.getItem("date"+i);
+		dates[i].value = dateData;
+	}
 }
-show();
+
+
+const createExpenseBtn = document.querySelector(".create-expense-btn");
+createExpenseBtn.addEventListener("click", function(){
+	
+	let count = localStorage.getItem("count");
+	let countNumber = Number(count);
+	localStorage.setItem("count", countNumber+1);
+	console.log(count);
+	
+	const form = document.querySelector(".form");
+	const row = document.createElement("div");
+	row.className = "row";
+	
+	const checkbox = document.createElement("input");
+	checkbox.type = "checkbox";
+	checkbox.className = "checkbox";
+	checkbox.id = "checkbox"+count;
+	//console.log(checkbox.id);
+	//checkboxArray.push(checkbox);
+	//localStorage.setItem("checkbox"+checkboxArray.indexOf(checkbox), "null");
+	localStorage.setItem(checkbox.id, "false");
+	
+	const title = document.createElement("p");
+	title.className = "title";
+	title.setAttribute("contenteditable", "true");
+	const emptyDiv = document.createElement("div");
+	emptyDiv.className = "empty-div";
+	const prefixContainer = document.createElement("div");
+	prefixContainer.className = "prefix-container";
+	const minusSign = document.createElement("div");
+	minusSign.innerHTML = "-";
+	const dollarSign = document.createElement("div");
+	dollarSign.innerHTML = "$";
+	const expense = document.createElement("p");
+	expense.className = "expense";
+	expense.setAttribute("contenteditable", "true");
+	const date = document.createElement("input");
+	date.type = "date";
+	date.className = "date";
+	const remove = document.createElement("div");
+	remove.className="remove";
+	remove.innerHTML = "X";
+	remove.id = "remove"+count;
+	//localStorage.setItem(remove.id, "null");
+	//removeArray.push(remove);
+	//console.log(removeArray);
+	//localStorage.setItem("remove"+removeArray.indexOf(remove), "null");
+	
+	
+	prefixContainer.appendChild(minusSign);
+	prefixContainer.appendChild(dollarSign)
+	row.appendChild(checkbox);
+	row.appendChild(title);
+	row.appendChild(emptyDiv);
+	row.appendChild(prefixContainer);
+	row.appendChild(expense);
+	row.appendChild(date);
+	row.appendChild(remove);
+	form.appendChild(row);
+	
+	console.log(checkboxArray)
+	
+	updateStorage();
+})
+	
+
+
+
+
+getData();
 
 
 
@@ -71,115 +188,3 @@ show();
 
 
 
-
-
-// create new row on button click
-const createExpenseBtn = document.querySelector(".create-expense-btn"); // "Create Note button in html"
-const insert = document.querySelector(".insert");
-createExpenseBtn.addEventListener("click", () =>{  // create the note
-
-	let rowContainer = document.createElement("div");
-	rowContainer.className="row-container";
-	
-	
-	let radioContainer = document.createElement("div");
-	radioContainer.className="radio-container";
-	
-	let rowRadio = document.createElement("div");
-	rowRadio.className="row-inner-inner row-radio";
-	
-	let rowCheckbox = document.createElement("input");
-	rowCheckbox.type="checkbox";
-	rowCheckbox.className="row-checkbox input"
-	
-	//radioContainer.appendChild(rowRadio.appendChild(rowCheckbox))
-	
-	
-	
-	let titleContainer = document.createElement("div");
-	titleContainer.className="row-inner title-container";
-	
-	let rowTitle = document.createElement("input");
-	rowTitle.className="row-inner-inner row-title";
-	rowTitle.type = "text";
-	//rowTitle.onkeyup(updateStorage)
-	
-	//titleContainer.appendChild(rowTitle)
-	
-	
-	
-	let depositContainer = document.createElement("div");
-	depositContainer.className="row-inner deposit-container"
-	
-	
-	
-	let expenseContainer = document.createElement("div");
-	expenseContainer.className = "row-inner expense-container"
-	
-	let prefixContainer = document.createElement("div");
-	prefixContainer.className="row-inner-inner prefix-container";
-	
-	let prefixContainerInner = document.createElement("div");
-	prefixContainerInner.className = "prefix-container-inner";
-	
-	let prefixContainerInnerMinus = document.createElement("div");
-	prefixContainerInnerMinus.className="prefix-container-inner-minus"
-	prefixContainerInnerMinus.innerHTML = "-";
-	
-	let prefixContainerInnerDollar = document.createElement("div");
-	prefixContainerInnerDollar.className="prefix-container-inner-dollar"
-	prefixContainerInnerDollar.innerHTML = "$";
-	
-	let negativeInputContainer = document.createElement("div");
-	negativeInputContainer.className="negative-input-container"
-	
-	let negativeInput = document.createElement("p");
-	//negativeInput.type = "number";
-	negativeInput.className = "input negative-input";
-	negativeInput.setAttribute("contenteditable", "true")
-	
-	//expenseContainer.appendChild(prefixContainer.appendChild(prefixContainerInner.appendChild(prefixContainerInnerMinus, prefixContainerInnerDollar), negativeInputContainer.appendChild(negativeInput)));
-	
-	
-
-	let dateContainer = document.createElement("div");
-	dateContainer.className = "row-inner date-container";
-	
-	let dateContainerInner = document.createElement("div");
-	dateContainerInner.className = "row-inner-inner date-container-inner";
-	
-	let dateInputContainer = document.createElement("div");
-	dateInputContainer.className = "date-input-container";
-	
-	let dateInput = document.createElement("input");
-	dateInput.type="date";
-	dateInput.className="input date-input"
-	
-	//dateContainer.appendChild(dateContainerInner.appendChild(dateInputContainer.appendChild(dateInput)))
-	
-	// THE ORDER MATTERS! DON'T CHANGE IT!
-	rowRadio.appendChild(rowCheckbox)
-	radioContainer.appendChild(rowRadio)
-	rowContainer.appendChild(radioContainer)
-	
-	titleContainer.appendChild(rowTitle)
-	rowContainer.appendChild(titleContainer)
-	
-	rowContainer.appendChild(depositContainer)
-	
-	prefixContainerInner.appendChild(prefixContainerInnerMinus)
-	prefixContainerInner.appendChild(prefixContainerInnerDollar)
-	prefixContainer.appendChild(prefixContainerInner)
-	negativeInputContainer.appendChild(negativeInput)
-	prefixContainer.appendChild(negativeInputContainer)
-	expenseContainer.appendChild(prefixContainer)
-	rowContainer.appendChild(expenseContainer)
-	
-	dateInputContainer.appendChild(dateInput)
-	dateContainerInner.appendChild(dateInputContainer)
-	dateContainer.appendChild(dateContainerInner)
-	rowContainer.appendChild(dateContainer)
-	
-	insert.appendChild(rowContainer);
-	
-});

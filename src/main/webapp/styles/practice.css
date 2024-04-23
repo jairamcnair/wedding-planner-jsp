@@ -11,7 +11,8 @@
 
 .row{ /* if you get rid of row, name this section .form*/
 	display: flex;
-	justify-content: center;
+	//justify-content: center;
+	justify-content: space-around;
 	align-items: center;
 	margin-top: 50px;
 	width: 100%;
@@ -25,7 +26,7 @@ input[type='checkbox'] {
 }
 
 input[type='checkbox']:checked{
-	accent-color: red;
+	accent-color: rgb(128, 255, 128);
 }
 
 .title{}
