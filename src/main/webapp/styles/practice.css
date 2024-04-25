@@ -9,9 +9,9 @@
     font-size: 20px;
 } 
 
-.row{ /* if you get rid of row, name this section .form*/
+.row, .fixed-row{ /* if you get rid of row, name this section .form*/
 	display: flex;
-	//justify-content: center;
+	/*justify-content: center;*/
 	justify-content: space-around;
 	align-items: center;
 	margin-top: 50px;
@@ -78,16 +78,24 @@ input[type='checkbox']{
 	height: 100%;
 }
 
-.title, .expense, .date{
+.title, .fixed-title, .expense, .fixed-expense, .date, .fixed-date{
 	border: 2px solid black;
 	text-align: center;
 }
 
-.title, .empty-div, .expense, .date{
+.title, .fixed-title, .empty-div, .expense, .fixed-expense, .date, .fixed-date{
 	width: 20%;
 	height: 100%;
 	padding: 10px;
 }
+
+/*.fixed-title{
+	border: 2px solid black;
+	text-align: center;
+	width: 20%;
+	height: 100%;
+	padding: 10px;
+}*/
  
   .create-expense-btn{
 	  margin-top: 30px;
