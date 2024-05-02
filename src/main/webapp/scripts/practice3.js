@@ -17,6 +17,29 @@ function updateStorage(){
 	localStorage.setItem("fixedRows", fixedForm.innerHTML);
 }
 
+
+function calculateSum(){
+	let feSum = 0;
+	let eSum = 0;
+	const fixedE = document.querySelectorAll(".fixed-expense");
+	const e = document.querySelectorAll(".expense");
+	
+	for(i = 0;i < fixedE.length; i++){
+		//console.log(fixedE[i].innerHTML);
+		feSum = Number(fixedE[i].innerHTML) + feSum
+		//console.log(feSum);
+	}
+	
+	for(i = 0; i < e.length; i++){
+		//console.log(e[i].innerHTML);
+		eSum = Number(e[i].innerHTML) + eSum
+		//console.log(eSum);
+	}
+	const sumDiv = document.querySelector(".sum");
+	sumDiv.innerHTML = feSum + eSum;
+}
+
+
 const checkboxArray = [];
 const removeArray = [];
 //localStorage.setItem("count", 5) // this needs to happen only the first time the page loads, not after
@@ -43,7 +66,8 @@ fixedForm.addEventListener("click", function(e){
         expenses = document.querySelectorAll(".fixed-expense");
         expenses.forEach(ex => {
 			ex.onkeyup = function() {
-				console.log("Hey");
+				//console.log("Hey");
+				calculateSum();
 				updateStorage();
 			}
 		})
@@ -104,6 +128,7 @@ form.addEventListener("click", function(e){
         expenses = document.querySelectorAll(".expense");
         expenses.forEach(ex => {
 			ex.onkeyup = function() {
+				calculateSum();
 				updateStorage();
 			}
 		})
@@ -185,6 +210,7 @@ form.addEventListener("click", function(e){
 
 
 function getData(){
+	calculateSum()
 	form.innerHTML = localStorage.getItem("rows");
 	fixedForm.innerHTML = localStorage.getItem("fixedRows");
 	// make count local storage not reset on page reload
@@ -337,3 +363,4 @@ createExpenseBtn.addEventListener("click", function(){
 
 
 getData();
+calculateSum();

@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Wedding Planner Ledger</title>
+<link rel="icon" type="image/x-icon" href="/images/favicon.ico">
 <link rel="stylesheet" href="./styles/ledger.css"/>
 </head>
 
@@ -13,6 +14,7 @@
 
 <div class="ledger-page">
 
+	<div class="sum"> </div>
 	<form class="fixed-form">
 		<div class="fixed-row">
 			<input class="fixed-checkbox" type="checkbox" id="checkbox0"/>
