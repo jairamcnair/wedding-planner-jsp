@@ -13,17 +13,18 @@
 
 	<div>
 		<nav>
-			<div id="h1-div"> <h1> Wedding Checklist Overview </h1> </div>
+			<!--<div id="h1-div"> <h1> Wedding Checklist Overview </h1> </div>-->
             	<div class="nav-inner-1">
                             <div class="p-div"> <p> Budget + Guest List </p> </div>
                             <div class="a-div"> <a href="Budget.jsp"> Budget </a> </div>
                             <div class="a-div"> <a href="GuestList.jsp"> Guest List </a> </div>
-                            <div class="a-div"> <a href="Practice3.jsp"> Ledger </a> </div>
                  </div>
                  <div class="nav-inner-1">
                             <div class="p-div"> <p> Facility + Food </p> </div>
                             <div class="a-div"> <a href=".Facility.jsp"> Facility </a></div>
+                            <div class="a-div"> <a href="FacilityLedger.jsp"> Facility Ledger </a></div>
                             <div class="a-div"> <a href="Food.jsp"> Food </a></div>
+                            <div class="a-div"> <a href=".Facility.jsp"> Food Ledger </a></div>
                  </div>
                  <div class="nav-inner-1">
                             <div class="p-div"> <p> Function + Entertainment </p> </div>

@@ -6,10 +6,11 @@
     padding: 0px;
     box-sizing: border-box;
     /*font-family: 'sans serif', 'Montserrat';*/
-    /*font-family: 'sans serif', 'Poppins';*/
-    font-family: "Varela Round", sans-serif;
-  	font-weight: 400;
-  	font-style: normal;
+    font-family: 'sans serif', 'Poppins';
+    font-size: 20px;
+    /*font-family: "Varela Round", sans-serif;*/
+  	/*font-weight: 400;
+  	font-style: normal;*/
 }
 
 .page{
@@ -30,7 +31,7 @@ nav{
     top: 0; /* makes div stretch from top to bottom without the content filling it all the way */
     bottom: 0; /* makes div stretch from top to bottom without the content filling it all the way */
     /*background-color: #FEF0E8;*/
-    background-color: #EDF1FC;
+    background-color: #fafafa;
 }
 
 #h1-div{
@@ -40,7 +41,7 @@ nav{
     align-items: center;
     width: 100%;
     height: 10%;
-    background-color: rgb(0, 128, 255);
+    background-color: cadetblue;
 }
 
 #h1-div h1{
@@ -64,13 +65,12 @@ nav{
     display: flex;
     align-items: center;
     height: 60px;
-    /*background-color: #FFA689;*/
-    background-color: #D0DBFB;
+    background-color: cadetblue;
     padding-left: 10px;
 }
 
 .p-div p{
-    font-size: 17px; /*font-size: 22px;*/
+    font-size: 20px; /*font-size: 22px;*/
     color: white;
 }
 
@@ -81,13 +81,13 @@ nav{
 }
 
 a{ /* 'Link' element */
-    font-size: 16px; /*font-size: 19px;*/
+    font-size: 20px; /*font-size: 19px;*/
     text-decoration: none;
-    color: #E6967A;
+    color: black;
 }
 
 a:hover{ /* 'Link' element */
-    font-size: 17px; /*font-size: 20px;*/
+    font-size: 18px; /*font-size: 20px;*/
     text-decoration: underline;
 }
 

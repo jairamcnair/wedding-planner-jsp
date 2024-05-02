@@ -5,11 +5,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Wedding Planner Ledger</title>
-<link rel="stylesheet" href="./styles/practice.css"/>
+<link rel="stylesheet" href="./styles/ledger.css"/>
 </head>
 
 <body>
-	<!--<jsp:include page="Navigation.jsp" flush="true"/>-->
+	<jsp:include page="Navigation.jsp" flush="true"/>
 
 <div class="ledger-page">
 
