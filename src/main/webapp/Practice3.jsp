@@ -9,9 +9,9 @@
 </head>
 
 <body>
-	<!--<jsp:include page="Navigation.jsp" flush="true"/>-->
+	<jsp:include page="Navigation.jsp" flush="true"/>
 
-<div class="page">
+<div class="ledger-page">
 
 	<form class="fixed-form">
 		<div class="fixed-row">

@@ -15,6 +15,9 @@
 .page{
     margin-left: 25%; /* has to match nav width */
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
 }
 
 nav{
