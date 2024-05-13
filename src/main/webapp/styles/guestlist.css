@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    /*font-family: 'sans serif', 'Montserrat';*/
+    font-family: 'sans serif', 'Poppins';
+    /*font-family: "Raleway", sans-serif;*/
+    font-weight: 300;
+    font-size: 15px;
+} 
+
+.display-column{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.guestlist-page{
+	margin-left: 25%; /* has to match nav width */
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    background-color: rgb(227, 227, 230);
+}
+
+.guestlist-row{
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+}
+.row-inner{
+	width: 60%;
+	height: auto;
+	display: flex;
+	flex-direction: column;
+}
+.row-inner2{
+	width: 40%;
+	border: 2px solid red;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	align-items: top;
+}
+.checkbox-div{
+	border: 2px solid rgb(0, 128, 255);
+	width: 25%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.upper-row, .lower-row{
+	border: 2px solid blue;
+	width: 100%;
+	height: 50%;
+	display: flex;
+	flex-direction: row;
+}
+
+.name-div, .email-div{
+	width: 50%;
+	height: 100%;
+	border: 2px solid pink;
+	display: flex;
+	flex-direction: row;
+}
+
+.address-div{
+	width: 100%;
+	height: 100%;
+	border: 2px solid pink;
+	display: flex;
+	flex-direction: row;
+}
+
+.hotel-div {
+	border: 2px solid lightgreen;
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+}
+.label{
+	width: 200px;
+	height: 100%;
+	border: 2px solid red;
+	margin: auto;
+	padding: 5px;
+}
+
+.name-input, .email-input{
+	border: 2px solid purple;
+	width: 75%;
+	height: 100%;
+	padding: 10px;
+	margin: auto;
+	letter-spacing: 2px;
+}
+
+.address-input{
+	border: 2px solid purple;
+	width: 100%;
+	height: 100%;
+	padding: 10px;
+	letter-spacing: 2px;
+}
+.estppl-input, .finalppl-input, .kings-input, .queens-input{
+	border: 2px solid purple;
+	width: 50px;
+	height: 30px;
+	padding: 2px;
+	letter-spacing: 2px;
+	text-align: center;
+}
+
+input[type='checkbox']{
+	width: 30px;
+	height: 30px;
+	accent-color: red;
+}
+
+.add-guest-btn{
+	position: fixed;
+	bottom: 500px;
+}
