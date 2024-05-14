@@ -73,7 +73,7 @@ guestlistForm.addEventListener("click", function(e){
 	else if(e.target.tagName === "INPUT"){ // not working
 		alert("hey");
 	}
-	else if(e.target.tagName === "DIV" && e.target.className === "remove"){
+	else if(e.target.tagName === "DIV" && e.target.className === "row-inner3"){
 		
 		e.target.parentElement.remove();
 		
@@ -117,6 +117,8 @@ function getData(){
 const addGuestBtn = document.querySelector(".add-guest-btn");
 addGuestBtn.addEventListener("click", function(){
 	
+	console.log("clicked");
+	
 	let count = localStorage.getItem("count");
 	let countNumber = Number(count);
 	localStorage.setItem("count", countNumber+1);
@@ -135,33 +137,189 @@ addGuestBtn.addEventListener("click", function(){
 	//localStorage.setItem("checkbox"+checkboxArray.indexOf(checkbox), "null");
 	localStorage.setItem(checkbox.id, "false");
 	
-	const title = document.createElement("p");
-	title.className = "title";
-	title.setAttribute("contenteditable", "true");
+	const rowInner = document.createElement("div");
+	rowInner.className = "row-inner";
+	const rowInner2 = document.createElement("div");
+	rowInner2.className = "row-inner2";
+	const rowInner3 = document.createElement("div");
+	rowInner3.className = "row-inner3"
+	rowInner3.innerHTML = "X";
+	
+	
+	const upperRow = document.createElement("div");
+	upperRow.className = "upper-row";
+	
+	const nameDiv = document.createElement("div");
+	nameDiv.className = "name-div";
+	const nameLabel = document.createElement("p");
+	nameLabel.className = "label";
+	nameLabel.innerHTML = "Name/Household";
+	const nameInput = document.createElement("p");
+	nameInput.className = "name-input input";
+	nameInput.contentEditable = "true";
+	
+	const emailDiv = document.createElement("div");
+	emailDiv.className = "email-div";
+	const emailLabel = document.createElement("p");
+	emailLabel.className = "email-label";
+	emailLabel.innerHTML = "Email";
+	const emailInput = document.createElement("p");
+	emailInput.className = "email-input input";
+	emailInput.contentEditable = "true";
+	
+	
+	
+	const lowerRow = document.createElement("div");
+	lowerRow.className = "lower-row";
+	
+	const addressDiv = document.createElement("div");
+	addressDiv.className = "address-div";
+	const addressLabel = document.createElement("p");
+	addressLabel.className = "label";
+	addressLabel.innerHTML = "Address";
+	const addressInput = document.createElement("p");
+	addressInput.className = "address-input input";
+	addressInput.contentEditable = "true";
+	
+	
+	
+	const lowerRow2 = document.createElement("div");
+	lowerRow2.className = "lower-row2";
+	
+	const hotelDiv = document.createElement("div");
+	hotelDiv.className = "hotel-div";
+	
+	const div = document.createElement("div");
+	div.className = "display-column";
+	div.innerHTML = "Need Hotel";
+	
+	/* CHECKBOX */
+	const hotelCheckbox = document.createElement("input");
+	hotelCheckbox.type = "checkbox";
+	hotelCheckbox.className = "checkbox";
+	hotelCheckbox.id = "guestlist-hotel-cb"+count;
+	
+	const kingsDiv = document.createElement("div");
+	kingsDiv.className = "display-column";
+	kingsDiv.innerHTML = "Kings:"
+	
+	const kingsInput = document.createElement("p");
+	kingsInput.className = "kings-input input";
+	kingsInput.contentEditable = "true";
+	
+	const queensDiv = document.createElement("div");
+	queensDiv.className = "display-column";
+	queensDiv.innerHTML = "Queens:"
+	
+	const queensInput = document.createElement("p");
+	queensInput.className = "queens-input input";
+	queensInput.contentEditable = "true";
+	
+	
+	
+	const checkboxDiv1 = document.createElement("div");
+	checkboxDiv1.className = "checkbox-div";
+	const numInvitedDiv = document.createElement("div");
+	numInvitedDiv.innerHTML = "# of PPL Invited";
+	const numInvitedInput = document.createElement("p");
+	numInvitedInput.className = "estppl-input input";
+	numInvitedInput.contentEditable = "true";
+	
+	
+	/* CHECKBOX */
+	const checkboxDiv2 = document.createElement("div");
+	checkboxDiv2.className = "checkbox-div";
+	const inviteSentDiv = document.createElement("div");
+	inviteSentDiv.innerHTML = "Invite Sent";
+	const inviteSentCheckbox = document.createElement("input");
+	inviteSentCheckbox.type = "checkbox";
+	inviteSentCheckbox.className = "checkbox";
+	inviteSentCheckbox.id = "guestlist-invitesent-cb"+count;
+	
+	/* CHECKBOX */
+	const checkboxDiv3 = document.createElement("div");
+	checkboxDiv3.className = "checkbox-div";
+	const rsvpDiv = document.createElement("div");
+	rsvpDiv.innerHTML = "RSVP Received";
+	const rsvpCheckbox = document.createElement("input");
+	rsvpCheckbox.type = "checkbox";
+	rsvpCheckbox.className = "checkbox";
+	rsvpCheckbox.id = "guestlist-rsvp-cb"+count;
+	
+	
+	const checkboxDiv4 = document.createElement("div");
+	checkboxDiv4.className = "checkbox-div";
+	const numComingDiv = document.createElement("div");
+	numComingDiv.innerHTML = "# of PPL Coming";
+	const numComingInput = document.createElement("p");
+	numComingInput.className = "finalppl-input input";
+	numComingInput.contentEditable = "true";
+	
+	
 	
 	//localStorage.setItem(remove.id, "null");
 	//removeArray.push(remove);
 	//console.log(removeArray);
-	//localStorage.setItem("remove"+removeArray.indexOf(remove), "null");
+	//localStorage.setItem("remove"+removeArray.indexOf(remove), "null")
 	
 	
-	prefixContainer.appendChild(minusSign);
-	prefixContainer.appendChild(dollarSign)
-	row.appendChild(checkbox);
-	row.appendChild(title);
-	row.appendChild(emptyDiv);
-	row.appendChild(prefixContainer);
-	row.appendChild(expense);
-	row.appendChild(date);
-	row.appendChild(remove);
+	//right
 	form.appendChild(row);
+	row.appendChild(rowInner);
+	row.appendChild(rowInner2);
+	row.appendChild(rowInner3);
 	
+	//right
+	rowInner.appendChild(upperRow);
+	rowInner.appendChild(lowerRow);
+	rowInner.appendChild(lowerRow2);
+	
+	//right
+	rowInner2.appendChild(checkboxDiv1);
+	rowInner2.appendChild(checkboxDiv2);
+	rowInner2.appendChild(checkboxDiv3);
+	rowInner2.appendChild(checkboxDiv4);
+	checkboxDiv1.appendChild(numInvitedDiv);
+	checkboxDiv1.appendChild(numInvitedInput);
+	checkboxDiv2.appendChild(inviteSentDiv);
+	checkboxDiv2.appendChild(inviteSentCheckbox);
+	checkboxDiv3.appendChild(rsvpDiv);
+	checkboxDiv3.appendChild(rsvpCheckbox);
+	checkboxDiv4.appendChild(numComingDiv);
+	checkboxDiv4.appendChild(numComingInput);
+	
+	
+	//right
+	upperRow.appendChild(nameDiv);
+	nameDiv.appendChild(nameLabel);
+	nameDiv.appendChild(nameInput);
+	upperRow.appendChild(emailDiv);
+	emailDiv.appendChild(emailLabel);
+	emailDiv.appendChild(emailInput);
+	lowerRow.appendChild(addressDiv);
+	addressDiv.appendChild(addressLabel);
+	addressDiv.appendChild(addressInput);
+	
+
+	
+	// right
+	lowerRow2.appendChild(hotelDiv);
+	hotelDiv.appendChild(div);
+	hotelDiv.appendChild(kingsDiv);
+	hotelDiv.appendChild(queensDiv);
+	
+	
+	
+	div.appendChild(hotelCheckbox);
+	kingsDiv.appendChild(kingsInput);
+	queensDiv.appendChild(queensInput);
 	//console.log(form);
 	//console.log(checkboxArray)
 	
 	updateStorage();
 })
 getData();
+//updateStorage(); // when you delete the guestListrow from local storage uncomment this
 
 
 

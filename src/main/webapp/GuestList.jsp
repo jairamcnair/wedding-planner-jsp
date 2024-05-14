@@ -16,7 +16,7 @@
 	<p id="final-guest-count"></p>
 	
 	<form class="guestlist-form">
-	
+	<!--  
 		<div class="guestlist-row">
 		
 			<div class="row-inner">
@@ -30,7 +30,7 @@
 				</div>
 				
 				
-				<div class="lower-row">
+				<div class="lower-row2">
 					<div class="hotel-div">
 						<div class="display-column">
 							Need Hotel
@@ -75,8 +75,10 @@
 				</div>
 			</div>
 			
+			<div class="row-inner3"> X </div>
 			
 		</div>
+	-->
 	</form>
 
 	
