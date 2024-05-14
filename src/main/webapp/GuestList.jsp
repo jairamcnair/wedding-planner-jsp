@@ -12,8 +12,27 @@
 
 <div class="guestlist-page">
 
-	<p id="estimated-guest-count"></p>
-	<p id="final-guest-count"></p>
+	<div class="page-top">
+		<div>
+			<h1> Kings Needed </h1>
+			<p class="kings-sum-div"></p>
+		</div>
+		<div>
+			<h1> Queens Needed </h1>
+			<p class="queens-sum-div"></p>
+		</div>
+		
+		<div>
+			<h1> Estimated Guest Count </h1>
+			<p class="guest-count"></p>
+		</div>
+		
+		<div>
+			<h1> Final Guest Count </h1>
+			<p class="final-guest-count"></p>
+		</div>
+	
+	</div>
 	
 	<form class="guestlist-form">
 	<!--  

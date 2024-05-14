@@ -12,6 +12,25 @@
     font-size: 13px;
 } 
 
+.page-top{
+	width: 100%;
+	
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	align-items: center;
+}
+
+.page-top div{
+	width: 20%;
+	background-color: #fafafa;
+	border: 1px solid #cfddc2;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 10px;
+}
 .display-column{
 	display: flex;
 	flex-direction: column;
@@ -29,21 +48,27 @@
 }
 
 .guestlist-row{
+	/*border: 1px solid black;*/
+	border: 1px solid #cfddc2;
+	background-color: #fafafa;
 	display: flex;
 	flex-direction: row;
 	width: 100%;
-	margin-top: 5px;
-	margin-bottom: 5px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	padding: 10px;
 }
+
 .row-inner{
 	width: 60%;
 	height: auto;
 	display: flex;
 	flex-direction: column;
 }
+
 .row-inner2{
 	width: 35%;
-	border: 2px solid red;
+	/*border: 2px solid red;*/
 	display: flex;
 	flex-direction: row;
 	justify-content: space-evenly;
@@ -51,40 +76,56 @@
 }
 
 .row-inner3{
-	border: 2px solid brown;
+	/*border: 2px solid brown;*/
 	width: 5%;
 	height: auto;
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
 	align-items: center;
-	background-color: white;
 	font-size: 30px;
+	border: 1px solid #cfddc2;
+	background-color:cadetblue;
+	color: white;
 }
+
 .row-inner3:hover{
 	cursor: pointer;
-	background-color: rgb(192, 192, 192);
+	/*background-color: rgb(192, 192, 192);*/
 }
+
 .checkbox-div{
-	border: 2px solid rgb(0, 128, 255);
+	/*border: 2px solid rgb(0, 128, 255);*/
 	width: 25%;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 }
-.upper-row, .lower-row, .lower-row2{
-	border: 2px solid blue;
+
+.upper-row{
+	/*border: 1px solid black;*/
 	width: 100%;
 	height: 50%;
+	padding: 5px;
+	display: flex;
+	flex-direction: column;
+}
+.lower-row, .lower-row2{
+	/*border: 2px solid blue;*/
+	width: 100%;
+	height: 50%;
+	padding: 5px;
 	display: flex;
 	flex-direction: row;
 }
 
+.name-div{
+	margin-bottom: 10px;
+}
 .name-div, .email-div{
-	width: 50%;
+	width: 100%;
 	height: 100%;
-	border: 2px solid pink;
 	display: flex;
 	flex-direction: row;
 }
@@ -92,44 +133,44 @@
 .address-div{
 	width: 100%;
 	height: 100%;
-	border: 2px solid pink;
 	display: flex;
 	flex-direction: row;
 }
 
 .hotel-div {
-	border: 2px solid lightgreen;
 	width: 100%;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-evenly;
 }
 .label{
-	width: 150px;
+	width: 20%;
+	text-align: right;
 	height: 100%;
-	border: 2px solid red;
 	margin: auto;
 	padding: 5px;
 }
 
 .email-label{
-	width: 15%;
+	text-align: right;
+	width: 20%;
 	height: 100%;
-	border: 2px solid red;
 	margin: auto;
 	padding: 5px;
 }
+
 .email-input{
-	border: 2px solid purple;
-	width: 85%;
-	height: 100%;
+	border: 1px solid #cfddc2;
+	font-weight: bold;
+	width: 80%;
+	height: auto;
 	padding: 10px;
-	margin: auto;
 	letter-spacing: 2px;
 }
 
 .name-input{
-	border: 2px solid purple;
+	border: 1px solid #cfddc2;
+	font-weight: bold;
 	width: 80%;
 	height: 100%;
 	padding: 10px;
@@ -138,14 +179,17 @@
 }
 
 .address-input{
-	border: 2px solid purple;
-	width: 100%;
+	border: 1px solid #cfddc2;
+	font-weight: bold;
+	width: 80%;
 	height: 100%;
 	padding: 10px;
+	margin: auto;
 	letter-spacing: 2px;
 }
 .estppl-input, .finalppl-input, .kings-input, .queens-input{
-	border: 2px solid purple;
+	border: 1px solid #cfddc2;
+	font-weight: bold;
 	width: 50px;
 	height: 30px;
 	padding: 2px;
@@ -156,7 +200,7 @@
 input[type='checkbox']{
 	width: 30px;
 	height: 30px;
-	accent-color: red;
+	accent-color: cadetblue;;
 }
 
 

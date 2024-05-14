@@ -11,45 +11,107 @@ function updateStorage(){
 const checkboxArray = [];
 const removeArray = [];
 
+function calculateSum(){
+	let kingsSum = 0;
+	let queensSum = 0;
+	let guestCount = 0;
+	let finalGuestCount = 0;
+	
+	const kingsInput = document.querySelectorAll(".kings-input");
+	const queensInput = document.querySelectorAll(".queens-input");
+	const guestCountInput = document.querySelectorAll(".estppl-input");
+	const finalGuestCountInput = document.querySelectorAll(".finalppl-input");
+	
+	for(i = 0;i < kingsInput.length; i++){
+		//console.log(kingsInput[i].innerHTML);
+		kingsSum += Number(kingsInput[i].innerHTML);
+		//console.log(feSum);
+	}
+	
+	for(i = 0;i < queensInput.length; i++){
+		//console.log(queensInput[i].innerHTML);
+		queensSum += Number(queensInput[i].innerHTML);
+		//console.log(feSum);
+	}
+	
+	for(i = 0;i < guestCountInput.length; i++){
+		//console.log(guestCountInput[i].innerHTML);
+		guestCount += Number(guestCountInput[i].innerHTML);
+		//console.log(feSum);
+	}
+	
+	for(i = 0;i < finalGuestCountInput.length; i++){
+		//console.log(finalGuestCountInput[i].innerHTML);
+		finalGuestCount += Number(finalGuestCountInput[i].innerHTML);
+		//console.log(feSum);
+	}
+	
+	
+	const kingsSumDiv = document.querySelector(".kings-sum-div");
+	kingsSumDiv.innerHTML = kingsSum;
+	
+	const queensSumDiv = document.querySelector(".queens-sum-div");
+	queensSumDiv.innerHTML = queensSum;
+	
+	const guestCountDiv = document.querySelector(".guest-count");
+	guestCountDiv.innerHTML = guestCount;
+	
+	const finalGuestCountDiv = document.querySelector(".final-guest-count");
+	finalGuestCountDiv.innerHTML = finalGuestCount;
+}
+
 
 guestlistForm.addEventListener("click", function(e){
 	console.log("yoyo")
 	if(e.target.tagName === "P"){
-		console.log("paragraph")
+		//console.log("paragraph")
 		names = document.querySelectorAll(".name-input");
         names.forEach(n => {
             n.onkeyup = function(){ // each time a key is pressed, the storage is updated
                 updateStorage();
+                calculateSum();
             }
         })
         emails = document.querySelectorAll(".email-input");
         emails.forEach(em => {
 			em.onkeyup = function() {
 				updateStorage();
+				calculateSum();
 			}
 		})
 		addresses = document.querySelectorAll(".address-input");
         addresses.forEach(ad => {
 			ad.onkeyup = function() {
 				updateStorage();
+				calculateSum();
 			}
 		})
 		estpeople = document.querySelectorAll(".estppl-input");
         estpeople.forEach(ep => {
 			ep.onkeyup = function() {
 				updateStorage();
+				calculateSum();
 			}
 		})
 		finalpeople = document.querySelectorAll(".finalppl-input");
         finalpeople.forEach(fp => {
 			fp.onkeyup = function() {
 				updateStorage();
+				calculateSum();
+			}
+		})
+		kings = document.querySelectorAll(".kings-input");
+        kings.forEach(ki => {
+			ki.onkeyup = function() {
+				updateStorage();
+				calculateSum();
 			}
 		})
 		queens = document.querySelectorAll(".queens-input");
         queens.forEach(qu => {
 			qu.onkeyup = function() {
 				updateStorage();
+				calculateSum();
 			}
 		})
 	}
@@ -79,7 +141,7 @@ guestlistForm.addEventListener("click", function(e){
 		
 		//find last character of target id
 		let lastCharRemove = e.target.id.slice(-1);
-		console.log(lastCharRemove);
+		//console.log(lastCharRemove);
 		updateStorage();
 	}
 })
@@ -117,12 +179,12 @@ function getData(){
 const addGuestBtn = document.querySelector(".add-guest-btn");
 addGuestBtn.addEventListener("click", function(){
 	
-	console.log("clicked");
+	//console.log("clicked");
 	
 	let count = localStorage.getItem("count");
 	let countNumber = Number(count);
 	localStorage.setItem("count", countNumber+1);
-	console.log(count);
+	//console.log(count);
 	
 	const form = document.querySelector(".guestlist-form");
 	const row = document.createElement("div");
@@ -182,7 +244,7 @@ addGuestBtn.addEventListener("click", function(){
 	addressInput.contentEditable = "true";
 	
 	
-	
+
 	const lowerRow2 = document.createElement("div");
 	lowerRow2.className = "lower-row2";
 	
@@ -319,6 +381,7 @@ addGuestBtn.addEventListener("click", function(){
 	updateStorage();
 })
 getData();
+calculateSum();
 //updateStorage(); // when you delete the guestListrow from local storage uncomment this
 
 
