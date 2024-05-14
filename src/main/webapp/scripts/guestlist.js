@@ -143,6 +143,7 @@ guestlistForm.addEventListener("click", function(e){
 		let lastCharRemove = e.target.id.slice(-1);
 		//console.log(lastCharRemove);
 		updateStorage();
+		calculateSum();
 	}
 })
 

@@ -9,7 +9,7 @@
 </head>
 
 <body>
-
+<jsp:include page="Navigation.jsp" flush="true"/>
 <div class="guestlist-page">
 
 	<div class="page-top">
